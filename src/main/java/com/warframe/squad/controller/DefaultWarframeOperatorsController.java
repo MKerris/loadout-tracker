@@ -3,28 +3,27 @@ package com.warframe.squad.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-import com.warframe.squad.entity.WeaponType;
-import com.warframe.squad.entity.Weapon;
-import com.warframe.squad.service.WarframeWeaponsService;
+import com.warframe.squad.entity.Operator;
+import com.warframe.squad.service.WarframeOperatorsService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-public class DefaultWarframeWeaponsController implements WarframeWeaponsController {
-  
+public class DefaultWarframeOperatorsController implements WarframeOperatorsController {
+
   @Autowired
-  private WarframeWeaponsService warframeWeaponsService;
+  private WarframeOperatorsService warframeOperatorsService;
   
   @Override
-  public List<Weapon> fetchWeapons(WeaponType weaponType) {
+  public List<Operator> fetchOperators() {
+
+    log.debug("Controller: GET Operators");
     
-    log.debug("weaponType={}", weaponType);
-    
-    return warframeWeaponsService.fetchWeapons(weaponType);
+    return warframeOperatorsService.fetchOperators();
   }
+
   
-
-
+/*
   public Weapon saveWeapon(String weaponName, WeaponType weaponType, String weaponDesc) {
     
     log.debug("weapon_name={}, weapon_type={}, weapon_desc={}", weaponName, weaponType, weaponDesc);
@@ -32,5 +31,7 @@ public class DefaultWarframeWeaponsController implements WarframeWeaponsControll
     return warframeWeaponsService.saveWeapon(weaponName, weaponType, weaponDesc);
     
   }
+
+ */
 
 }

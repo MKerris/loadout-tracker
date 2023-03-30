@@ -1,10 +1,10 @@
 
 -- Operators
-INSERT INTO operator (operator_name, focus_school) VALUES('Hespyr', 'VAZARIN');
-INSERT INTO operator (operator_name, focus_school) VALUES('Nwanda', 'ZENURIK');
-INSERT INTO operator (operator_name, focus_school) VALUES('Amaranthea', 'UNAIRU');
-INSERT INTO operator (operator_name, focus_school) VALUES('OldHobo', 'MADURAI');
-INSERT INTO operator (operator_name, focus_school) VALUES('Redcape', 'NARAMON');
+INSERT INTO operator (operator_name, warframe_fk, focus_school) VALUES('Hespyr', 1, 'VAZARIN');
+INSERT INTO operator (operator_name, warframe_fk, focus_school) VALUES('Nwanda', 2, 'ZENURIK');
+INSERT INTO operator (operator_name, warframe_fk, focus_school) VALUES('Amaranthea', 3, 'UNAIRU');
+INSERT INTO operator (operator_name, warframe_fk, focus_school) VALUES('OldHobo', 4, 'MADURAI');
+INSERT INTO operator (operator_name, warframe_fk, focus_school) VALUES('Redcape', 5, 'NARAMON');
 
 -- Weapons
 INSERT INTO weapons (weapon_name, weapon_type, weapon_desc) VALUES('Penta', 'PRIMARY', 'Launcher');

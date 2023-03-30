@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS warframe;
 DROP TABLE IF EXISTS weapons;
 DROP TABLE IF EXISTS operator;
 
-
 CREATE TABLE operator (
   operator_pk int unsigned NOT NULL AUTO_INCREMENT,
   operator_name varchar(40) NOT NULL,
+  warframe_fk int unsigned,
   focus_school enum('MADURAI', 'NARAMON', 'UNAIRU', 'VAZARIN', 'ZENURIK') NOT NULL,
   PRIMARY KEY (operator_pk)
 );
