@@ -13,14 +13,14 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultWeaponsController implements WeaponsController {
   
   @Autowired
-  private WeaponsService warframeWeaponsService;
+  private WeaponsService weaponsService;
   
   @Override
   public List<Weapon> fetchWeapons(WeaponType weaponType) {
     
     log.debug("weaponType={}", weaponType);
     
-    return warframeWeaponsService.fetchWeapons(weaponType);
+    return weaponsService.fetchWeapons(weaponType);
   }
   
 
@@ -29,7 +29,7 @@ public class DefaultWeaponsController implements WeaponsController {
     
     log.debug("weapon_name={}, weapon_type={}, weapon_desc={}", weaponName, weaponType, weaponDesc);
 
-    return warframeWeaponsService.saveWeapon(weaponName, weaponType, weaponDesc);
+    return weaponsService.saveWeapon(weaponName, weaponType, weaponDesc);
     
   }
 

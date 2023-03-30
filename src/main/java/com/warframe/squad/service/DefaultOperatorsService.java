@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultOperatorsService implements OperatorsService {
   
   @Autowired
-  private OperatorsDao warframeOperatorsDao;
+  private OperatorsDao operatorsDao;
 
   @Transactional(readOnly = true)
   @Override
@@ -21,7 +21,7 @@ public class DefaultOperatorsService implements OperatorsService {
 
     log.info("Service: GET Operators");
     
-    List<Operator> operators = warframeOperatorsDao.fetchOperators();
+    List<Operator> operators = operatorsDao.fetchOperators();
 
     return operators;
   }

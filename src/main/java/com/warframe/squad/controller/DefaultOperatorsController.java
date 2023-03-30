@@ -12,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultOperatorsController implements OperatorsController {
 
   @Autowired
-  private OperatorsService warframeOperatorsService;
+  private OperatorsService operatorsService;
   
   @Override
   public List<Operator> fetchOperators() {
 
     log.debug("Controller: GET Operators");
     
-    return warframeOperatorsService.fetchOperators();
+    return operatorsService.fetchOperators();
   }
 
   

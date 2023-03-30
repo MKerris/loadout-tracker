@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DefaultWeaponsService implements WeaponsService {
   
   @Autowired
-  private WeaponsDao warframeWeaponsDao;
+  private WeaponsDao weaponsDao;
 
   @Transactional(readOnly = true)
   @Override
@@ -23,7 +23,7 @@ public class DefaultWeaponsService implements WeaponsService {
     
     log.info("The fetchWeapons method was callled with type={}", weaponType);
     
-    List<Weapon> weapons = warframeWeaponsDao.fetchWeapons(weaponType);
+    List<Weapon> weapons = weaponsDao.fetchWeapons(weaponType);
     
     if(weapons.isEmpty()) {
       String msg = String.format("No weapons were found with type of %s", weaponType);
@@ -39,7 +39,7 @@ public class DefaultWeaponsService implements WeaponsService {
     
     // Break object into three variables to write values to DB
     
-    return warframeWeaponsDao.saveWeapon(weaponName, weaponType, weaponDesc);
+    return weaponsDao.saveWeapon(weaponName, weaponType, weaponDesc);
   }
 
 }
