@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    password: warframe
+    username: warframe
+    url: jdbc:mysql://localhost:3306/warframe
+
+logging:
+  level:
+    root: warn
+    '[com.warframe]': debug
