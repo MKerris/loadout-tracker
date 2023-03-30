@@ -4,11 +4,15 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.warframe.squad.entity.FocusSchool;
 import com.warframe.squad.entity.Operator;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -49,15 +53,15 @@ public interface OperatorsController {
       }
   )
 
-  @GetMapping                                                           // Spring will map GET requests at /weapons to the fetchWeapons method
+  @GetMapping("/getOperators")
   @ResponseStatus(code = HttpStatus.OK)
     List<Operator> fetchOperators();
 
-/*  
+
   @Operation(
-      summary = "Adds a weapon to the table",
+      summary = "Adds an Operator to the table",
       
-      description = "Adds a weapon given a weapon name, type, and description.",
+      description = "Adds an Operator given an Operator name, and Focus school. Newly created Operators are issued a default Warframe value.",
       
       responses = {
           @ApiResponse(
@@ -80,32 +84,26 @@ public interface OperatorsController {
 
       parameters = {
           @Parameter(
-              name = "weaponName",
+              name = "operatorName",
               allowEmptyValue = false,
               required = true,
-              description = "Name of weapon"),
+              description = "Name of Operator"),
           @Parameter(
-              name = "weaponType", 
+              name = "focusSchool", 
               allowEmptyValue = false, 
               required = true, 
-              description = "Weapon type of Primary, Secondary, or Melee"),
-          @Parameter(
-              name = "weaponDesc",
-              allowEmptyValue = false,
-              required = true,
-              description = "Description of type of weapon (Bow, Pistol, Rifle, etc.)")
+              description = "Focus School for Operator")
       }
 
   )
   
-  @PostMapping("/addWeapon")
+  @PostMapping("/addOperator")
   @ResponseStatus(code = HttpStatus.CREATED)
-    Weapon saveWeapon(
-        @RequestParam(required = true) String weaponName,
-        @RequestParam(required = true) WeaponType weaponType,
-        @RequestParam(required = true) String weaponDesc
+    Operator newOperator(
+        @RequestParam(required = true) String operatorName,
+        @RequestParam(required = true) FocusSchool focusSchool
         );
 
   // @formatter:on
-*/  
+  
 }

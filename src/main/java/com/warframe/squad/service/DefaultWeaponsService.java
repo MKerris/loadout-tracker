@@ -37,8 +37,6 @@ public class DefaultWeaponsService implements WeaponsService {
   @Override
   public Weapon saveWeapon(String weaponName, WeaponType weaponType, String weaponDesc) {
     
-    // Break object into three variables to write values to DB
-    
     return weaponsDao.saveWeapon(weaponName, weaponType, weaponDesc);
   }
 
