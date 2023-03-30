@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @RequestMapping("/weapons")                                             // Any request coming to /weapons will be mapped to this class
 @OpenAPIDefinition(info = @Info(title = "Warframe Weapons Service"), 
   servers = {@Server(url = "http://localhost:8080", description = "Local server")})
-public interface WarframeWeaponsController {
+public interface WeaponsController {
 
   // @formatter:off
   @Operation(

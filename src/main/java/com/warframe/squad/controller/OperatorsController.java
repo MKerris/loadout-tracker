@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @RequestMapping("/operators")
 @OpenAPIDefinition(info = @Info(title = "Warframe Operators Service"), 
   servers = {@Server(url = "http://localhost:8080", description = "Local server")})
-public interface WarframeOperatorsController {
+public interface OperatorsController {
 
   // @formatter:off
   @Operation(

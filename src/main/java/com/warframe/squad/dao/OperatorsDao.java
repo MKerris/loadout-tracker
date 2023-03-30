@@ -3,7 +3,7 @@ package com.warframe.squad.dao;
 import java.util.List;
 import com.warframe.squad.entity.Operator;
 
-public interface WarframeOperatorsDao {
+public interface OperatorsDao {
   
   List<Operator> fetchOperators();
   

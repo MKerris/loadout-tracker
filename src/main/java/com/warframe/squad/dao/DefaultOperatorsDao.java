@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Component
 @Slf4j
-public class DefaultWarframeOperatorsDao implements WarframeOperatorsDao {
+public class DefaultOperatorsDao implements OperatorsDao {
 
   @Autowired
   private NamedParameterJdbcTemplate jdbcTemplate;                          // allows use of named parameters rather than '?' placeholders
