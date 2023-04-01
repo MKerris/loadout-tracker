@@ -7,4 +7,8 @@ public interface WarframeService {
   
   List<Warframe> fetchWarframes();
 
+  Warframe updateWarframe(Long operatorId, String warframeName, Long primaryWeapon,
+      Long secondaryWeapon, Long meleeWeapon);
+
+
 }

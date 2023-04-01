@@ -26,4 +26,12 @@ public class DefaultWarframeService implements WarframeService {
     return warframes;
   }
 
+  @Override
+  public Warframe updateWarframe(Long operatorId, String warframeName, Long primaryWeapon,
+      Long secondaryWeapon, Long meleeWeapon) {
+
+    return warframeDao.updateWarframe(operatorId, warframeName, primaryWeapon, secondaryWeapon, meleeWeapon);
+  }
+
+  
 }

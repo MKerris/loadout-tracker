@@ -6,7 +6,11 @@ import com.warframe.squad.entity.Warframe;
 public interface WarframeDao {
   
   List<Warframe> fetchWarframes();
+
+  Warframe updateWarframe(Long operatorId, String warframeName, Long primaryWeapon,
+      Long secondaryWeapon, Long meleeWeapon);
+
+  Warframe fetchOperatorWarframe(Long operatorId);
   
-//Weapon saveWeapon(String weaponName, WeaponType weaponType, String weaponDesc);
 
 }

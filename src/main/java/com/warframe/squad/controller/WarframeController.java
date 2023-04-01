@@ -3,12 +3,18 @@ package com.warframe.squad.controller;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.warframe.squad.entity.Operator;
 import com.warframe.squad.entity.Warframe;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,9 +29,9 @@ public interface WarframeController {
 
   // @formatter:off
   @Operation(
-      summary = "Warframe Loadout",
+      summary = "Returns details of a Warframe",
       
-      description = "Returns all Warframes from database",
+      description = "Returns a list of Warframes",
       
       responses = {
           @ApiResponse(
@@ -50,28 +56,25 @@ public interface WarframeController {
 
   )
 
-  @GetMapping                                                           // Spring will map GET requests at /warframe to the fetchWarframe method
+  @GetMapping("/getWarframes")
   @ResponseStatus(code = HttpStatus.OK)
     List<Warframe> fetchWarframes();
 
-/*  
+  
+  
   @Operation(
-      summary = "Adds a weapon to the table",
+      summary = "Updates a Warframe",
       
-      description = "Adds a weapon given a weapon name, type, and description.",
+      description = "Updates a Warframe given for a specific Operator ID and uppdates Warframe name, primary, secondary, and/or melee weapon(s)",
       
       responses = {
           @ApiResponse(
-              responseCode = "201",                                     // 201 = Created
-              description = "Weapon added successfully.",
-              content = @Content(mediaType = "application/json")), 
-          @ApiResponse(
-              responseCode = "400",                                     // 400 = Bad input/request
-              description = "Invalid request parameters.",
+              responseCode = "200",                                     // 200 = OK
+              description = "Warframe was updated.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
               responseCode = "404",                                     // 404 = Not found
-              description = "No weapons were found with input criteria.",
+              description = "Warframe was not found.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
               responseCode = "500",                                     // 500 = Unplanned exception
@@ -81,31 +84,141 @@ public interface WarframeController {
 
       parameters = {
           @Parameter(
-              name = "weaponName",
+              name = "operatorId",
               allowEmptyValue = false,
               required = true,
-              description = "Name of weapon"),
+              description = "ID of Operator"),
           @Parameter(
-              name = "weaponType", 
+              name = "warframeName",
+              allowEmptyValue = false,
+              required = true,
+              description = "Name of Warframe"),
+          @Parameter(
+              name = "primaryWeapon", 
               allowEmptyValue = false, 
               required = true, 
-              description = "Weapon type of Primary, Secondary, or Melee"),
+              description = "Primary weapon value"),
           @Parameter(
-              name = "weaponDesc",
-              allowEmptyValue = false,
-              required = true,
-              description = "Description of type of weapon (Bow, Pistol, Rifle, etc.)")
+              name = "secondaryWeapon", 
+              allowEmptyValue = false, 
+              required = true, 
+              description = "Secondary weapon value"),
+          @Parameter(
+              name = "meleeWeapon", 
+              allowEmptyValue = false, 
+              required = true, 
+              description = "Melee weapon value")
       }
 
   )
   
-  @PostMapping("/addWeapon")
+  @PutMapping("/updateWarframe")
+  @ResponseStatus(code = HttpStatus.OK)
+    Warframe updateWarframe(
+        @RequestParam(required = true) Long operatorId,
+        @RequestParam(required = true) String warframeName,
+        @RequestParam(required = true) Long primaryWeapon,
+        @RequestParam(required = true) Long secondaryWeapon,
+        @RequestParam(required = true) Long meleeWeapon
+        );   
+
+  
+/*
+  @Operation(
+      summary = "Adds a Warframe",
+      
+      description = "Adds a Warframe (only used when a new Operator is added) ",
+      
+      responses = {
+          @ApiResponse(
+              responseCode = "201",                                     // 201 = Created
+              description = "Warframe added successfully.",
+              content = @Content(mediaType = "application/json")), 
+          @ApiResponse(
+              responseCode = "404",                                     // 404 = Not found
+              description = "Not found.",
+              content = @Content(mediaType = "application/json")),
+          @ApiResponse(
+              responseCode = "409",                                     // 409 = Conflict
+              description = "Warframe with input criteria already exists.",
+              content = @Content(mediaType = "application/json")),
+          @ApiResponse(
+              responseCode = "500",                                     // 500 = Unplanned exception
+              description = "An unplanned error occurred.",
+              content = @Content(mediaType = "application/json"))
+      },
+
+      parameters = {
+          @Parameter(
+              name = "warframeName",
+              allowEmptyValue = false,
+              required = true,
+              description = "Name of Warframe"),
+          @Parameter(
+              name = "primaryWeapon", 
+              allowEmptyValue = false, 
+              required = true, 
+              description = "Primary weapon value"),
+          @Parameter(
+              name = "secondaryWeapon", 
+              allowEmptyValue = false, 
+              required = true, 
+              description = "Secondary weapon value"),
+          @Parameter(
+              name = "meleeWeapon", 
+              allowEmptyValue = false, 
+              required = true, 
+              description = "Melee weapon value")
+      }
+
+  )
+  
+  @PostMapping("/addWarframe")
   @ResponseStatus(code = HttpStatus.CREATED)
-    Weapon saveWeapon(
-        @RequestParam(required = true) String weaponName,
-        @RequestParam(required = true) WeaponType weaponType,
-        @RequestParam(required = true) String weaponDesc
+    Warframe newWarframe(
+        @RequestParam(required = true) Long warframeName,
+        @RequestParam(required = true) Long primaryWeapon,
+        @RequestParam(required = true) Long secondaryWeapon,
+        @RequestParam(required = true) Long meleeWeapon
         );
+
+  
+  @Operation(
+      summary = "Deletes a Warframe",
+      
+      description = "Deletes a Warframe given a Warframe ID (only used when Operator is deleted)",
+      
+      responses = {
+          @ApiResponse(
+              responseCode = "200",                                     // 200 = OK
+              description = "Warframe was deleted.",
+              content = @Content(mediaType = "application/json")),
+          @ApiResponse(
+              responseCode = "404",                                     // 404 = Not found
+              description = "Warframe was not found.",
+              content = @Content(mediaType = "application/json")),
+          @ApiResponse(
+              responseCode = "500",                                     // 500 = Unplanned exception
+              description = "An unplanned error occurred.",
+              content = @Content(mediaType = "application/json"))
+      },
+
+      parameters = {
+          @Parameter(
+              name = "warframeId",
+              allowEmptyValue = false,
+              required = true,
+              description = "PK of Warframe")
+      }
+
+  )
+  
+  @DeleteMapping("/removeWarframe")
+  @ResponseStatus(code = HttpStatus.OK)
+    void deleteWarframe(
+        @RequestParam(required = true) Long warframeId
+        ); 
+
 */
   // @formatter:on
 }

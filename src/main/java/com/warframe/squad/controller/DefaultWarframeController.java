@@ -24,4 +24,15 @@ public class DefaultWarframeController implements WarframeController {
     
   }
 
+  @Override
+  public Warframe updateWarframe(Long operatorId, String warframeName, Long primaryWeapon,
+      Long secondaryWeapon, Long meleeWeapon) {
+
+    log.debug("Controller: updateWarframe() operatorId={}, warframeName={}, primaryWeapon={}, secondaryWeapon={}, meleeWeapon={}", 
+        operatorId, warframeName, primaryWeapon, secondaryWeapon, meleeWeapon);
+    
+    return warframeService.updateWarframe(operatorId, warframeName, primaryWeapon, secondaryWeapon, meleeWeapon);
+  }
+
+
 }
