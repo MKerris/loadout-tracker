@@ -35,4 +35,19 @@ public class DefaultOperatorsService implements OperatorsService {
     return operatorsDao.newOperator(operatorName, focusSchool);
   }
 
+  @Transactional
+  @Override
+  public void deleteOperator(Long operatorId) {
+
+    operatorsDao.deleteOperator(operatorId);
+  }
+
+
+  @Override
+  public Operator updateOperator(Long operatorId, Long warframeId, FocusSchool focusSchool) {
+    
+    return operatorsDao.updateOperator(operatorId, warframeId, focusSchool);
+  }
+  
+
 }

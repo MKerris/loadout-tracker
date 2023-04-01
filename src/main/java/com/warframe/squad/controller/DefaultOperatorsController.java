@@ -32,16 +32,20 @@ public class DefaultOperatorsController implements OperatorsController {
 
   }
 
-  
-/*
-  public Weapon saveWeapon(String weaponName, WeaponType weaponType, String weaponDesc) {
+  @Override
+  public void deleteOperator(Long operatorId) {
     
-    log.debug("weapon_name={}, weapon_type={}, weapon_desc={}", weaponName, weaponType, weaponDesc);
+    log.debug("operatorId={}", operatorId);
 
-    return warframeWeaponsService.saveWeapon(weaponName, weaponType, weaponDesc);
-    
+    operatorsService.deleteOperator(operatorId);
   }
 
- */
+  @Override
+  public Operator updateOperator(Long operatorId, Long warframeId, FocusSchool focusSchool) {
+    
+    log.debug("operatorId={}, warframeId={}, focusSchool={}", operatorId, warframeId, focusSchool);
+
+    return operatorsService.updateOperator(operatorId, warframeId, focusSchool);
+  }
 
 }

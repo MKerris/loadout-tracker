@@ -10,4 +10,8 @@ public interface OperatorsService {
   
   Operator newOperator(String operatorName, FocusSchool focusSchool);
 
+  void deleteOperator(Long operatorId);
+
+  Operator updateOperator(Long operatorId, Long warframeId, FocusSchool focusSchool);
+
 }

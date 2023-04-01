@@ -44,7 +44,7 @@ public interface WeaponsController {
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
               responseCode = "404",                                     // 404 = Not found
-              description = "No weapons were found with input criteria.",
+              description = "No Weapons were found.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
               responseCode = "500",                                     // 500 = Unplanned exception
@@ -78,12 +78,12 @@ public interface WeaponsController {
               description = "Weapon added successfully.",
               content = @Content(mediaType = "application/json")), 
           @ApiResponse(
-              responseCode = "400",                                     // 400 = Bad input/request
-              description = "Invalid request parameters.",
+              responseCode = "404",                                     // 404 = Not found
+              description = "Not found.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
-              responseCode = "404",                                     // 404 = Not found
-              description = "No weapons were found with input criteria.",
+              responseCode = "409",                                     // 409 = Conflict
+              description = "Weapon with input criteria already exists.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(
               responseCode = "500",                                     // 500 = Unplanned exception
