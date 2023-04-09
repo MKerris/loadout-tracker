@@ -34,6 +34,7 @@ CREATE TABLE warframe (
 CREATE TABLE warframe_weapon (
   warframe_fk int unsigned NOT NULL,
   weapon_fk int unsigned NOT NULL,
+  weapon_type enum('PRIMARY', 'SECONDARY', 'MELEE') NOT NULL,
   FOREIGN KEY (warframe_fk) REFERENCES warframe (warframe_pk) ON DELETE CASCADE,
   FOREIGN KEY (weapon_fk) REFERENCES weapons (weapon_pk) ON DELETE CASCADE
 );

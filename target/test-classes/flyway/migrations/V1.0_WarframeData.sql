@@ -42,3 +42,20 @@ INSERT INTO warframe (operator_fk, warframe_name, primary_weapon, secondary_weap
 INSERT INTO warframe (operator_fk, warframe_name, primary_weapon, secondary_weapon, melee_weapon) VALUES(3, 'Frost Prime', 3, 14, 25);
 INSERT INTO warframe (operator_fk, warframe_name, primary_weapon, secondary_weapon, melee_weapon) VALUES(4, 'Garuda Prime', 4, 15, 27);
 INSERT INTO warframe (operator_fk, warframe_name, primary_weapon, secondary_weapon, melee_weapon) VALUES(5, 'Ash Prime', 5, 16, 28);
+
+-- warframe_weapon
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (1,1,'PRIMARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (1,12,'SECONDARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (1,21,'MELEE');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (2,2,'PRIMARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (2,13,'SECONDARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (2,23,'MELEE');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (3,3,'PRIMARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (3,14,'SECONDARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (3,25,'MELEE');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (4,4,'PRIMARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (4,15,'SECONDARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (4,27,'MELEE');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (5,5,'PRIMARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (5,16,'SECONDARY');
+INSERT INTO warframe_weapon (warframe_fk, weapon_fk, weapon_type) VALUES (5,28,'MELEE');

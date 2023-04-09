@@ -62,7 +62,7 @@ public interface WeaponsController {
 
   )
 
-  @GetMapping                                                           // Spring will map GET requests at /weapons to the fetchWeapons method
+  @GetMapping("/getWeapon")
   @ResponseStatus(code = HttpStatus.OK)
     List<Weapon> fetchWeapons(@RequestParam(required = true) WeaponType weaponType);
 

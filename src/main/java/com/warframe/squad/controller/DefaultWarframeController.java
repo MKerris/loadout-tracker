@@ -24,14 +24,38 @@ public class DefaultWarframeController implements WarframeController {
     
   }
 
-  @Override
-  public Warframe updateWarframe(Long operatorId, String warframeName, Long primaryWeapon,
-      Long secondaryWeapon, Long meleeWeapon) {
 
-    log.debug("Controller: updateWarframe() operatorId={}, warframeName={}, primaryWeapon={}, secondaryWeapon={}, meleeWeapon={}", 
-        operatorId, warframeName, primaryWeapon, secondaryWeapon, meleeWeapon);
+  @Override
+  public Warframe updateWarframeName(Long operatorId, String warframeName) {
+
+    log.debug("Controller: updateWarframeName() operatorId={}, warframeName={}", operatorId, warframeName);
     
-    return warframeService.updateWarframe(operatorId, warframeName, primaryWeapon, secondaryWeapon, meleeWeapon);
+    return warframeService.updateWarframeName(operatorId, warframeName);
+    
+  }
+
+  @Override
+  public Warframe updateWarframePrimary(Long operatorId, Long primaryWeaponPk) {
+
+    log.debug("Controller: updateWarframeName() operatorId={}, warframeName={}", operatorId, primaryWeaponPk);
+    
+    return warframeService.updateWarframePrimary(operatorId, primaryWeaponPk);
+  }
+
+  @Override
+  public Warframe updateWarframeSecondary(Long operatorId, Long secondaryWeaponPk) {
+
+    log.debug("Controller: updateWarframeName() operatorId={}, warframeName={}", operatorId, secondaryWeaponPk);
+    
+    return warframeService.updateWarframeSecondary(operatorId, secondaryWeaponPk);
+  }
+
+  @Override
+  public Warframe updateWarframeMelee(Long operatorId, Long meleeWeaponPk) {
+
+    log.debug("Controller: updateWarframeName() operatorId={}, warframeName={}", operatorId, meleeWeaponPk);
+    
+    return warframeService.updateWarframeMelee(operatorId, meleeWeaponPk);
   }
 
 

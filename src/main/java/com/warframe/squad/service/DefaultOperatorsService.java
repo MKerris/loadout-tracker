@@ -32,12 +32,16 @@ public class DefaultOperatorsService implements OperatorsService {
   @Override
   public Operator newOperator(String operatorName, FocusSchool focusSchool) {
     
+    // TODO: Create new warframe with default loadout
+    
     return operatorsDao.newOperator(operatorName, focusSchool);
   }
 
   @Transactional
   @Override
   public void deleteOperator(Long operatorId) {
+    
+    // TODO: Ensure ON DELETE CASCADE properly kills warframe without killing weapons
 
     operatorsDao.deleteOperator(operatorId);
   }
