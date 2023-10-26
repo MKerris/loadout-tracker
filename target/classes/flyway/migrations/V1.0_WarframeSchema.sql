@@ -28,7 +28,7 @@ CREATE TABLE warframe (
   secondary_weapon int,
   melee_weapon int,
   PRIMARY KEY (warframe_pk),
-  FOREIGN KEY (operator_fk) REFERENCES operator (operator_pk)
+  FOREIGN KEY (operator_fk) REFERENCES operator (operator_pk) ON DELETE CASCADE
 );
 
 CREATE TABLE warframe_weapon (
